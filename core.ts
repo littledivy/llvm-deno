@@ -1,6 +1,6 @@
 export default Deno.dlopen("/usr/lib/llvm-12/lib/libLLVM.so", {
   // Core
-  "LLVMShutdown": { 
+  "LLVMShutdown": {
     parameters: [],
     result: "void",
   },
@@ -36,14 +36,115 @@ export default Deno.dlopen("/usr/lib/llvm-12/lib/libLLVM.so", {
     parameters: ["pointer", "pointer"],
     result: "pointer",
   },
+  // Core -> Types
+  "LLVMInt1TypeInContext": {
+    parameters: ["pointer"],
+    result: "pointer",
+  },
+  "LLVMInt8TypeInContext": {
+    parameters: ["pointer"],
+    result: "pointer",
+  },
+  "LLVMInt16TypeInContext": {
+    parameters: ["pointer"],
+    result: "pointer",
+  },
+  "LLVMInt32TypeInContext": {
+    parameters: ["pointer"],
+    result: "pointer",
+  },
+  "LLVMInt64TypeInContext": {
+    parameters: ["pointer"],
+    result: "pointer",
+  },
+  "LLVMInt128TypeInContext": {
+    parameters: ["pointer"],
+    result: "pointer",
+  },
+  "LLVMIntTypeInContext": {
+    parameters: ["pointer", "i32"],
+    result: "pointer",
+  },
+  "LLVMInt1Type": {
+    parameters: [],
+    result: "pointer",
+  },
+  "LLVMInt8Type": {
+    parameters: [],
+    result: "pointer",
+  },
+  "LLVMInt16Type": {
+    parameters: [],
+    result: "pointer",
+  },
+  "LLVMInt32Type": {
+    parameters: [],
+    result: "pointer",
+  },
+  "LLVMInt64Type": {
+    parameters: [],
+    result: "pointer",
+  },
+  "LLVMInt128Type": {
+    parameters: ["i32"],
+    result: "pointer",
+  },
 
-  // Core->Instruction Builders
+  // Core -> Types -> Function
+  "LLVMFunctionType": {
+    parameters: ["pointer", "pointer", "i32", "i32"],
+    result: "pointer",
+  },
+
+  // Core -> Modules
+  "LLVMAddFunction": {
+    parameters: ["pointer", "pointer", "pointer"],
+    result: "pointer",
+  },
+
+  // Core -> Instruction Builders
   "LLVMCreateBuilder": {
     parameters: [],
     result: "pointer",
   },
   "LLVMCreateBuilderInContext": {
     parameters: ["pointer"],
+    result: "pointer",
+  },
+  "LLVMDisposeBuilder": {
+    parameters: ["pointer"],
+    result: "void",
+  },
+  "LLVMPositionBuilderAtEnd": {
+    parameters: ["pointer", "pointer"],
+    result: "void",
+  },
+  "LLVMBuildRetVoid": {
+    parameters: ["pointer"],
+    result: "pointer",
+  },
+  "LLVMBuildRet": {
+    parameters: ["pointer", "pointer"],
+    result: "pointer",
+  },
+  "LLVMDumpModule": {
+    parameters: ["pointer"],
+    result: "void",
+  },
+  "LLVMBuildAdd": {
+    parameters: ["pointer", "pointer", "pointer", "pointer"],
+    result: "pointer",
+  },
+
+  // Core->Values->Constants->Scalar
+  "LLVMConstInt": {
+    parameters: ["pointer", "i64", "i32"],
+    result: "pointer",
+  },
+
+  // Core -> Basic Block
+  "LLVMAppendBasicBlockInContext": {
+    parameters: ["pointer", "pointer", "pointer"],
     result: "pointer",
   },
 });
